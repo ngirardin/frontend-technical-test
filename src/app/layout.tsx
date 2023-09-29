@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -15,7 +16,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={clsx(
+          inter.className,
+          "min-h-screen mt-8 mx-auto w-full max-w-4xl"
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
