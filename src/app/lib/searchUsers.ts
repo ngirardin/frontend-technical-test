@@ -1,13 +1,8 @@
 import { users } from "../../../mockData";
-
-export type User = {
-  id: number;
-  name: string;
-  email: string;
-  type: string;
-};
+import { User } from "./fetchUsers";
 
 type Params = {
+  users: User[];
   search?: string;
   page: number;
 };

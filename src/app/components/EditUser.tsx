@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { User } from "../lib/searchUsers";
 import { Input } from "./Input";
+import { User } from "../lib/fetchUsers";
 
 type Props = {
   user: User;

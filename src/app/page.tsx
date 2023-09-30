@@ -1,6 +1,7 @@
 import EditUser from "./components/EditUser";
 import Pagination from "./components/Pagination";
 import Search from "./components/Search";
+import { fetchUsers } from "./lib/fetchUsers";
 import { searchUsers } from "./lib/searchUsers";
 
 type Props = {
@@ -10,11 +11,14 @@ type Props = {
   };
 };
 
-const getData = (props: Props) => {
+const getData = async (props: Props) => {
   const page = Number(props.searchParams.page) || 1;
   const search = props.searchParams.search;
 
+  const users = await fetchUsers();
+
   const results = searchUsers({
+    users,
     search,
     page,
   });
@@ -22,8 +26,8 @@ const getData = (props: Props) => {
   return { ...results, page, search };
 };
 
-const App = (props: Props) => {
-  const data = getData(props);
+const App = async (props: Props) => {
+  const data = await getData(props);
 
   return (
     <div data-testid="appContainer" className="flex flex-col gap-6 h-screen">
